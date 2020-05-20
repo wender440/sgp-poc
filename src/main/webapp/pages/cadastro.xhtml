@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+	
+	<header class="page-header">
+      <div class="container-fluid">
+        <h2 class="no-margin-bottom">Cadastro</h2>
+      </div>
+    </header>
+    
+    <section class="dashboard-counts">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="statistics col-lg-12 col-12">
+	<h:form id="frmCadastroUsuario" prependId="false" style="margin-top: 10px;" styleClass="form-horizontal">
+	
+	     <div class="form-group">
+		    <p:outputLabel for="perfil">Perfil</p:outputLabel>		    
+		    <p:selectOneMenu id="perfil" value="#{cadastroController.idPerfil}" disabled="#{cadastroController.bloquear}" style="width: 260px;margin-left:20px;margin-top:-4px;" panelStyle="width: 260px;" height="150" required="true" requiredMessage="Perfil obrigatório">
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{cadastroController.perfis}" var="perfil" itemLabel="#{perfil.descricao}" itemValue="#{perfil.idPerfil}" />
+			</p:selectOneMenu>		    
+		 </div>
+	     <div class="form-group">
+		    <p:outputLabel for="cidade">Cidade</p:outputLabel>		    
+		    <p:selectOneMenu id="cidade" value="#{cadastroController.usuario.idCidade}" style="width: 260px;margin-left:20px;margin-top:-4px;" panelStyle="width: 260px;" height="150" required="true" requiredMessage="Cidade obrigatório" disabled="#{cadastroController.bloquear}">
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{cadastroController.cidades}"
+					var="cidade" itemLabel="#{cidade.nome}"
+					itemValue="#{cidade.idCidade}" />
+			</p:selectOneMenu>		    
+		 </div>
+		 
+		 
+		  <div class="form-group">
+		    <p:outputLabel for="gri" style=" margin-left:410px;  margin-top:-95px;">Escolaridade</p:outputLabel>		    
+		    <p:selectOneMenu id="gri" value="#{cadastroController.usuario.idGrauInstrucao}" 
+				style="width: 260px;margin-left:570px;margin-top:-100px;" panelStyle="width: 260px;" height="150"  
+				disabled="#{cadastroController.bloquear}">
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{cadastroController.grauinstrucoes}"
+					var="escolaridade" itemLabel="#{escolaridade.descricao}"
+					itemValue="#{escolaridade.idGrauInstrucao}" />
+			</p:selectOneMenu>		    
+		 </div>
+		 
+		 
+		 <p:outputPanel id="opcao" >
+		 <div class="form-group" >
+		    <p:outputLabel for="opcao" style=" margin-left:410px;  margin-top:-62px;" >Profissão</p:outputLabel>
+		    <p:selectOneMenu  value="#{cadastroController.usuario.idProfissao}" style="width: 260px;margin-left:570px;margin-top:-60px;" panelStyle="width: 260px;" height="150"  disabled="#{cadastroController.bloquear}">
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{cadastroController.profissoes}"
+					var="prof" itemLabel="#{prof.descricao}"
+					itemValue="#{prof.idProfissao}"  />
+			</p:selectOneMenu>	
+			
+		 </div>
+		 </p:outputPanel> 
+		 
+		 
+		 <div class="form-group">
+		    <p:outputLabel for="nome">Nome</p:outputLabel>
+		    <p:inputText id="nome" styleClass="form-control" value="#{cadastroController.usuario.nome}" required="true" requiredMessage="Nome obrigatório" readonly="#{cadastroController.bloquear}" />						  
+		 </div>		
+		 <div class="form-group">
+		    <p:outputLabel for="cpf">CPF</p:outputLabel>
+		    <p:inputMask id="cpf" styleClass="form-control" value="#{cadastroController.usuario.cpf}" mask="999.999.999-99" required="true" requiredMessage="CPF obrigatório" converter="CPFConverter" converterMessage="Formato de CPF incorreto" validator="CPFValidator" disabled="#{cadastroController.bloquear}" />						  
+		 </div>
+		  <div class="form-group">
+		    <p:outputLabel for="email">Email</p:outputLabel>
+		    <p:inputText id="email" styleClass="form-control" value="#{cadastroController.usuario.email}" validator="EmailValidator" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="dtNascimento">Data Nascimento</p:outputLabel>
+		    <p:inputMask id="dtNascimento" styleClass="form-control" value="#{cadastroController.usuario.dtNascimentoTxt}" mask="99/99/9999" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="telefone">Telefone Fixo</p:outputLabel>
+		    <p:inputMask id="telefone" styleClass="form-control" value="#{cadastroController.usuario.telefone}" mask="(99) 9999-9999?9" readonly="#{cadastroController.bloquear}" />						  
+		 </div>	
+		 <div class="form-group">
+		    <p:outputLabel for="celular">Celular</p:outputLabel>
+		    <p:inputMask id="celular" styleClass="form-control" value="#{cadastroController.usuario.celular}" mask="(99) 9999-9999?9" readonly="#{cadastroController.bloquear}" />						  
+		 </div>	
+		 <div class="form-group">
+		    <p:outputLabel for="whatsapp">Whatsapp</p:outputLabel>
+		    <p:inputMask id="whatsapp" styleClass="form-control" value="#{cadastroController.usuario.whatsapp}" mask="(99) 9999-9999?9" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="telegram">Telegram</p:outputLabel>
+		    <p:inputMask id="telegram" styleClass="form-control" value="#{cadastroController.usuario.telegram}" mask="(99) 9999-9999?9" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="facebook">Facebook</p:outputLabel>
+		    <p:inputText id="facebook" styleClass="form-control" value="#{cadastroController.usuario.facebook}" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="instagram">Instagram</p:outputLabel>
+		    <p:inputText id="instagram" styleClass="form-control" value="#{cadastroController.usuario.instagram}" readonly="#{cadastroController.bloquear}" />						  
+		 </div>
+		 <div class="form-group">
+		    <p:outputLabel for="twiter">Twiter</p:outputLabel>
+		    <p:inputText id="twiter" styleClass="form-control" value="#{cadastroController.usuario.twiter}" readonly="#{cadastroController.bloquear}" />						  
+		 </div>	
+		 
+		
+		 <center>		    
+		  	<p:commandLink value="Salvar" action="#{cadastroController.salvar()}" update=":formMsg:growl" styleClass="btn btn-primary" type="button" disabled="#{cadastroController.bloquear}" />		  	
+		 </center>				  
+	</h:form>
+	</div>
+	</div>
+	</div>
+	</section>
+	</ui:define>
+	
+</ui:composition>

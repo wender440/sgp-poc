@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+	<header class="page-header">
+      </header>
+      <h:outputText value="#{candidatowebService.listar}" />
+      
+     <!--  <div class="form-group">
+      	
+      		<p:outputLabel for="candidato"> Candidatos</p:outputLabel>
+      		<p:selectOneMenu id="candidato" value="#{candidatowebService.candidato}">
+      			<f:selectItem itemLabel="Selecione" itemValue=""/>
+      			<f:selectItems value="#{candidatowebService.listar}" var="c" itemLabel="#{c.nome}" itemValue="#{c.id}"/>
+      		</p:selectOneMenu>
+      	
+      </div> -->
+      
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,222 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+
+	<ui:define name="content">
+
+		<header class="page-header">
+			<div class="container-fluid">
+				<h2 class="no-margin-bottom">Entrevista com Eleitores</h2>
+			</div>
+		</header>
+	
+		<section class="dashboard-counts">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="statistics col-lg-12 col-12">
+						<h:form id="frmCadastroEleitores" prependId="false" style="margin-top:10px;" styleClass="form-horizontal">
+							
+							<div class="form-group">
+							 	<p:outputLabel for="horaInicio" >Hora de Início:</p:outputLabel>
+        						<p:inputMask  id="horaInicio" value="#{pesquisaEleitoralController.pesquisaEleitoral.horaInicio}" style="width: 260px;margin-left:50px;margin-top:-4px;" panelStyle="width: 260px;" height="150" pattern="HH:mm"  mask="99:99" 
+        						readonly="true"/>	
+							</div>
+							<div class="form-group">
+							 	<p:outputLabel for="horaFim" > Hora de Termino:</p:outputLabel>
+        						<p:inputMask id="horaFim" value="#{pesquisaEleitoralController.pesquisaEleitoral.horaFim}" style="width: 260px;margin-left:30px;margin-top:-4px;" panelStyle="width: 260px;" height="150" pattern="HH:mm"  mask="99:99"
+        						readonly="true"/>	
+							</div>
+							
+							<div class="form-group">
+							 	<p:outputLabel for="data" > Data da Entrevista:</p:outputLabel>
+        						<p:inputMask  id="data" value="#{pesquisaEleitoralController.pesquisaEleitoral.dataEntrevista}" style="width: 260px;margin-left:20px;margin-top:-4px;" panelStyle="width: 260px;" height="150" showOn="button" mask="99/99/9999"
+        						readonly="true"/>	
+							</div>
+							<div class="form-group">
+							    <p:outputLabel for="entrevistado">Entrevistado:</p:outputLabel>
+							    <p:inputText id="entrevistado" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.nomeEntrevistado}"  readonly="true" 
+							    />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="end">Endereço:</p:outputLabel>
+							    <p:inputText id="end" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.endereco}"  readonly="true"
+							    />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="bairro">Bairro:</p:outputLabel>
+							    <p:inputText id="bairro" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.bairro}"  readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="cep">CEP:</p:outputLabel>
+							    <p:inputMask  id="cep" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.cep}"  readonly="true" mask="99.999-9999"/>						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="tel">Telefone:</p:outputLabel>
+							    <p:inputMask  id="tel" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.telefone}"  readonly="true" mask="(99)9999-9999"/>						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="cel">Celular:</p:outputLabel>
+							    <p:inputMask  id="cel" styleClass="form-control" value="#{pesquisaEleitoralController.pesquisaEleitoral.celular}"  readonly="true" mask="(99)9999-99999"/>						  
+							 </div>
+							 
+						<p:separator/>
+							<center style="margin-bottom:60px;" >
+							<h2>Pesquisa Espontanêa</h2>
+							</center>
+							<div class="form-group"  >
+								<p:outputLabel  panelStyle="width: 260px;">1- Em quem o Senhor(a) votaria para Governador de Brasília em 2018?</p:outputLabel>
+							 <div class="form-group">
+									<p:outputLabel for="candidatoG"></p:outputLabel>
+									<p:selectOneMenu id="candidatoG" filter="true" filterMatchMode="startsWith"
+										value="#{candidatowebService.candidato}" >
+										<f:selectItem itemLabel="Selecione um Candidato" itemValue="" />
+										<f:selectItems immediate="true"
+											/>
+									</p:selectOneMenu>
+
+								</div>					  
+								
+							</div>
+							<div class="form-group">
+							    <p:outputLabel for="r1">Por quê?</p:outputLabel>
+							    <p:inputText id="r1" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							
+							<div class="form-group">
+							<p:outputLabel>2 - Em quem o Senhor(a) votaria para Deputado Distrital?</p:outputLabel>
+								<div class="form-group">
+									<p:outputLabel for="candidatoD"></p:outputLabel>
+									<p:selectOneMenu id="candidatoD" filter="true" filterMatchMode="startsWith"
+										value="#{candidatowebService.candidato}" >
+										<f:selectItem itemLabel="Selecione um Candidato" itemValue="" />
+										<f:selectItems  immediate="true"/>
+									</p:selectOneMenu>
+
+								</div>
+							</div>
+							
+							<div class="form-group">
+							    <p:outputLabel for="r2">Por quê?</p:outputLabel>
+							    <p:inputText id="r2" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							<p:outputLabel >3 - Em quem o Senhor(a) votaria para Deputado Federal?</p:outputLabel>
+							  <div class="form-group">
+									<p:outputLabel for="candidatoF"></p:outputLabel>
+									<p:selectOneMenu id="candidatoF" filter="true" filterMatchMode="startsWith"
+										value="#{candidatowebService.candidato}">
+										<f:selectItem itemLabel="Selecione um Candidato" itemValue="" />
+										<f:selectItems 
+											 var="c" />
+									</p:selectOneMenu>
+
+								</div>						  
+
+							</div>
+							
+							<div class="form-group">
+							    <p:outputLabel for="r3">Por quê?</p:outputLabel>
+							    <p:inputText id="r3" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 
+							 
+							 <div class="form-group">
+							<p:outputLabel>4 - Em quem o Senhor(a) votaria para Deputado Senador?</p:outputLabel>
+							<div class="form-group">
+									<p:outputLabel for="candidatoS"></p:outputLabel>
+									<p:selectOneMenu id="candidatoS" filter="true" filterMatchMode="startsWith"
+										value="#{candidatowebService.candidato}">
+										<f:selectItem itemLabel="Selecione um Candidato" itemValue="" />
+										<f:selectItems 	 var="c" />
+									</p:selectOneMenu>
+								</div>							  
+							</div>
+							
+							<div class="form-group">
+							    <p:outputLabel for="r4">Por quê?</p:outputLabel>
+							    <p:inputText id="r4" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							<p:outputLabel>5 - O que o senhor (a) indicaria como prioridades para melhorias da região que reside como, por exemplo,
+							 nas áreas de Educação, Geração de Empregos, Lazer, Saúde, Transporte, Segurança, Grandes Empresas tais como:Supermercados, 
+							 Shopping ETC?</p:outputLabel>
+							 
+							 	<div class="form-group">
+							    <p:outputLabel for="m1">Educação:</p:outputLabel>
+							    <p:inputText id="m1" styleClass="form-control"   readonly="true" />						  
+							 </div>
+								
+							</div>
+							
+							 <div class="form-group">
+							    <p:outputLabel for="m3">Geração de Empregos:</p:outputLabel>
+							    <p:inputText id="m3" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							
+							
+							<div class="form-group">
+							    <p:outputLabel for="m4">Lazer:</p:outputLabel>
+							    <p:inputText id="m4" styleClass="form-control"   readonly="true" />						  
+							 </div>
+								
+								<div class="form-group">
+							    <p:outputLabel for="m5">Saúde:</p:outputLabel>
+							    <p:inputText id="m5" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m6">Transporte:</p:outputLabel>
+							    <p:inputText id="m6" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m7">Segurança:</p:outputLabel>
+							    <p:inputText id="m7" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m8">Shoppings:</p:outputLabel>
+							    <p:inputText id="m8" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m9">Supermercados:</p:outputLabel>
+							    <p:inputText id="m9" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m10">PACS:</p:outputLabel>
+							    <p:inputText id="m10" styleClass="form-control"   readonly="true" />						  
+							 </div>
+							 
+							 
+							 <div class="form-group">
+							    <p:outputLabel for="m11">Outros:</p:outputLabel>
+							    <p:inputTextarea id="m11" styleClass="form-control"   readonly="true" />						  
+							</div>
+							 
+						<center>		    
+						  	<p:commandLink value="Salvar"  update=":formMsg:growl" styleClass="btn btn-primary" type="button" />		  	
+						</center>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>

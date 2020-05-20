@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+	<header class="page-header">
+      <div class="container-fluid">
+        <h2 class="no-margin-bottom">Mensagens <small> - Inbox do usuário</small></h2>        
+      </div>
+    </header>    
+    <section class="dashboard-counts">
+    <div class="container-fluid">
+    <div class="row">
+    	<div class="col-lg-12 col-12">
+    		 <center>		    
+			  	<p:link value="Nova mensagem" outcome="/pages/mensagem" styleClass="btn btn-primary" type="button" />		  	
+			 </center>
+    	</div>
+    </div>
+    <div class="row">
+	<p:panel id="panelTbMensagemEnviadas" header="Mensagens enviadas" style="margin-bottom:20px">		  
+    <h:form id="frmTbMensagensEnviadas" prependId="false">     		   
+	   <p:dataTable id="tbMensagensEnviadas" var="mensagem" value="#{mensagensController.enviadas}" rows="10" paginator="true" paginatorPosition="bottom" emptyMessage="Nenhum registro">		       
+        <p:column headerText="Data" style="width: 15%;text-align:center;" filterBy="#{mensagem.dtRegistroFmt}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.dtRegistroFmt}" />
+        </p:column>
+        <p:column headerText="Destinatário" style="width: 15%;text-align:left;" filterBy="#{mensagem.destinatario.nome}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.destinatario.nome}" />
+        </p:column>
+        <p:column headerText="Assunto" style="width: 40%; text-align:left;" filterBy="#{mensagem.assunto}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.assunto}" />
+        </p:column>           	       			    		        		    
+        <p:column headerText="Ações" style="width:100px;text-align:center;">
+             <p:link type="button" outcome="/pages/mensagem" title="Editar" styleClass="btn btn-primary" style="color: #fff;">
+               <i class="fa fa-pencil" aria-hidden="true" style="color: #fff;"></i>
+               <f:param name="idMensagem" value="#{mensagem.idMensagem}" />
+             </p:link>
+             <p:spacer />
+             <p:commandLink type="button" actionListener="#{mensagensController.excluirMensagem(mensagem)}" title="Excluir" update=":formMsg:growl" styleClass="btn btn-danger" style="color: #fff;">
+               <i class="fa fa-trash" aria-hidden="true" style="color: #fff;"></i>
+               <p:confirm header="Exclusão de registro" message="Deseja realmente excluir este registro?" />
+             </p:commandLink>
+        </p:column>
+	   </p:dataTable>
+    </h:form>
+    </p:panel>
+    <br/>
+    <hr/>
+    </div>
+    <div class="row">
+    <p:panel id="panelTbMensagemRecebidas" header="Mensagens recebidas" style="margin-bottom:20px">		  
+    <h:form id="frmTbMensagensRecebidas" prependId="false">     		   
+	   <p:dataTable id="tbMensagensRecebidas" var="mensagem" value="#{mensagensController.recebidas}" rows="10" paginator="true" paginatorPosition="bottom" emptyMessage="Nenhum registro">		       
+        <p:column headerText="Data" style="width: 15%;text-align:center;" filterBy="#{mensagem.dtRegistroFmt}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.dtRegistroFmt}" />
+        </p:column>
+        <p:column headerText="Remetente" style="width: 15%;text-align:left;" filterBy="#{mensagem.remetente.nome}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.remetente.nome}" />
+        </p:column>
+        <p:column headerText="Assunto" style="width: 40%; text-align:left;" filterBy="#{mensagem.assunto}" filterMatchMode="contains">
+            <h:outputText value="#{mensagem.assunto}" />
+        </p:column>           	       			    		        		    
+        <p:column headerText="Ações" style="width:100px;text-align:center;">
+             <p:link type="button" outcome="/pages/visualizar" title="Visualizar" styleClass="btn btn-primary" style="color: #fff;">
+               <i class="fa fa-eye" aria-hidden="true" style="color: #fff;"></i>
+               <f:param name="idMensagem" value="#{mensagem.idMensagem}" />
+             </p:link>             
+        </p:column>
+	   </p:dataTable>
+    </h:form>
+    </p:panel>
+    </div>
+	</div>
+	</section>
+	</ui:define>
+</ui:composition>

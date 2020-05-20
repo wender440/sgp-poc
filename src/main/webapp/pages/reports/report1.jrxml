@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="f9b5e5b8-7ab2-4552-ac66-385b42179add">
+	<property name="ireport.zoom" value="1.239669421487604"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1090"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH"/>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFEFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="Heading 1" fontSize="16" isBold="true"/>
+	<style name="Default"/>
+	<subDataset name="Table Dataset 1" uuid="fe363e45-8604-43bd-a1c0-4c3654d54a3d"/>
+	<subDataset name="Table Dataset 2" uuid="44ee6e40-9388-47a8-9eb1-bb6ecf0462d8"/>
+	<subDataset name="New Dataset 1" uuid="18d4f964-a034-40e0-8ab6-1d2ca553db56"/>
+	<subDataset name="Table Dataset 3" uuid="d5cf25ad-440c-4437-894d-a23f8a538567"/>
+	<subDataset name="dataset1" uuid="af5c6c87-0007-4d39-a159-dc2d02e36a9b"/>
+	<subDataset name="Table Dataset 4" uuid="9c123400-f90a-4301-8a7f-f5f7501dfade"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\cicer\\git\\sgp-repo\\src\\main\\webapp\\pages\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="field1" class="java.lang.String"/>
+	<group name="Ffield">
+		<groupExpression><![CDATA[$F{field1}]]></groupExpression>
+		<groupHeader>
+			<band height="643">
+				<staticText>
+					<reportElement x="193" y="18" width="160" height="20" uuid="a6ee68c4-20c9-41d9-bf71-7aba57d8416c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Pesquisa Espontanêa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="14" y="78" width="532" height="51" uuid="10e075e2-285f-459d-a99c-49704bfaab2d"/>
+					<text><![CDATA[1 -Em que o senhor(a) Votaria para Governador do DF em 2018?
+
+ ______________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="129" width="535" height="20" uuid="db7d7b6d-829c-416c-b409-4eb1e8441b84"/>
+					<text><![CDATA[Por quê? ________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="149" width="535" height="52" uuid="91b8fb59-8654-454d-818c-71512e6dfdd1"/>
+					<text><![CDATA[2 - Em quem o senhor(a) votaria para Deputado Distrital?
+    ________________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="201" width="535" height="33" uuid="5953fca4-9ced-4b62-a01a-2a40e99118b3"/>
+					<text><![CDATA[Porquê?_________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="234" width="534" height="52" uuid="965dabc0-79cf-4b26-81f4-d784c68edbfc"/>
+					<text><![CDATA[3 - Em quem o senhor(a) votaria para Deputado Federal?
+    ________________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="286" width="534" height="33" uuid="3f35105b-bb5d-491f-be9e-d2ba305433a5"/>
+					<text><![CDATA[Porquê?_________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="319" width="534" height="52" uuid="148aef3b-305e-42e7-a5a8-9d6983473cd3"/>
+					<text><![CDATA[4 - Em quem o senhor(a) votaria para Deputado Senador?
+    ________________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="371" width="534" height="33" uuid="de6c1c5d-a217-45c9-899a-b03e6b1dd35c"/>
+					<text><![CDATA[Porquê?_________________________________________________________________________________________
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="404" width="534" height="39" uuid="33a1793c-536c-4f6e-8a0b-d87757088a54"/>
+					<text><![CDATA[5 – O que o senhor (a) indicaria como prioridades para melhorias da região que reside como, por exemplo, nas áreas de Educação, Geração de Empregos, Lazer, Saúde, Transporte, Segurança, Grandes Empresas tais como: Supermercados, Shopping ETC.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="453" width="535" height="61" uuid="f2832cad-11c1-488f-a253-187debdabc76"/>
+					<text><![CDATA[Educação: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="514" width="535" height="61" uuid="5bd456cc-bea6-4b47-a1e4-e3e0b5cd43bc"/>
+					<text><![CDATA[Geração de Empregos: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="11" y="575" width="535" height="61" uuid="829ef62c-125b-4231-9379-93cc6be67bfe"/>
+					<text><![CDATA[Lazer: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="471">
+				<staticText>
+					<reportElement x="14" y="0" width="535" height="61" uuid="76159f93-ea7b-4943-bf03-5a1b857be994"/>
+					<text><![CDATA[Saúde: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="14" y="61" width="535" height="61" uuid="14e353c0-99ff-41bd-9e0c-8e766418c3cf"/>
+					<text><![CDATA[Transporte: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="122" width="535" height="61" uuid="51420f0d-7916-41d6-acd9-334ec3a417e3"/>
+					<text><![CDATA[Seguraça: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="15" y="183" width="535" height="28" uuid="9b064c8e-dcb8-4150-828f-3164dd1cffef"/>
+					<text><![CDATA[Grandes Empresas tais como:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="211" width="535" height="61" uuid="17837bdc-3c4a-47aa-9ef9-b03826c06869"/>
+					<text><![CDATA[Shoppings: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="272" width="535" height="61" uuid="2628bdec-19b5-4eb9-9ad5-6b4038c83503"/>
+					<text><![CDATA[Supermercados: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="333" width="535" height="61" uuid="ff59ff27-a49e-49eb-aac2-a99a77f105f3"/>
+					<text><![CDATA[PACS: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="394" width="535" height="61" uuid="2a839df0-9d18-4991-ac5c-1a925379f961"/>
+					<text><![CDATA[Outros: ________________________________________________________________________________________________
+
+________________________________________________________________________________________________]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="26">
+			<staticText>
+				<reportElement mode="Opaque" x="16" y="0" width="232" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="037b70ed-2f95-448d-b50a-413d4af005f5"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estudo Eleitoral  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="-535" width="548" height="20" uuid="d186b4d0-ae3c-4662-9912-e84dc1894cb4"/>
+				<text><![CDATA[1 - Em quem o senhor (a) votaria para Governador de Brasília em 2018?]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="-498" width="547" height="1" uuid="50baf19d-43b2-4b61-aad0-02374b18f856"/>
+			</line>
+			<line>
+				<reportElement x="51" y="-471" width="498" height="1" uuid="92212c3a-4e9a-435e-a822-d451adc97fef"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="-459" width="546" height="20" uuid="edf04f41-92bc-43a1-b6b1-781604e71e69"/>
+				<text><![CDATA[2 - Em quem o Senhor (a) votaria para Deputador Distrital?]]></text>
+			</staticText>
+			<line>
+				<reportElement x="51" y="-426" width="498" height="1" uuid="6dc53be3-5a82-410b-b1ca-0237644d1343"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="-406" width="535" height="20" uuid="1a89d8d1-3b7a-47cd-960a-4b36e25b4312"/>
+				<text><![CDATA[3 - Em quem o Senhor (a) votaria para Deputado Federal?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="-486" width="49" height="15" uuid="c8e0e2d3-70eb-4d32-b0af-de3b1c0d93f7"/>
+				<text><![CDATA[Por quê?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="-440" width="47" height="14" uuid="710d760f-6fb4-4565-b64d-4d6afe9323bd"/>
+				<text><![CDATA[Por quê?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="-383" width="48" height="16" uuid="ededa342-bd98-4f9a-8c96-d834d066c588"/>
+				<text><![CDATA[Por quê?]]></text>
+			</staticText>
+			<line>
+				<reportElement x="52" y="-367" width="498" height="1" uuid="386a1186-caf1-45c5-8324-afa6a2ea5ce9"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="-353" width="545" height="20" uuid="893965e4-6a81-42a7-993d-ab7cdf8234cf"/>
+				<text><![CDATA[4 - Em quem o Senhor votaria para Deputado Senador?   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="-328" width="47" height="16" uuid="7f961246-6cab-4cec-921a-932f093678ed"/>
+				<text><![CDATA[Por quê?]]></text>
+			</staticText>
+			<line>
+				<reportElement x="52" y="-313" width="498" height="1" uuid="52e3af6b-9fe1-4016-ba99-c0a222e51a28"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="-298" width="547" height="51" uuid="3d335720-2427-4e1f-b3e6-6e19af13fe16"/>
+				<text><![CDATA[5 - O que o senhor (a) indicaria como prioridades para melhorias da região que reside como, por exemplo, nas áreas de Educação, Geração de Empregos, Lazer, Saúde, Transporte, Segurança, Grandes Empresas tais como: Supermercados, Shopping ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="-238" width="48" height="15" uuid="cbe7a6e2-c9dd-460e-8778-b6b5c0faf0d7"/>
+				<text><![CDATA[Educação:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="50" y="-223" width="497" height="1" uuid="0b0b9c85-5551-4fbe-9507-ef65256d902a"/>
+			</line>
+			<line>
+				<reportElement x="4" y="-204" width="545" height="1" uuid="9e1525b1-5e00-43ed-b9dc-8dc0cd9612e2"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="-186" width="108" height="16" uuid="61b4dcb8-1801-4e7b-abe5-6d2d1bec481b"/>
+				<text><![CDATA[Geração de Empregos:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="-154" width="545" height="1" uuid="65ec6414-24b9-4a4a-9971-5716ef94d4a5"/>
+			</line>
+			<line>
+				<reportElement x="112" y="-170" width="437" height="1" uuid="df0cbd83-c732-4852-98de-b5d4de2ff3ca"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="-144" width="31" height="16" uuid="03657904-da7a-4067-9067-1b985372b68b"/>
+				<text><![CDATA[Lazer:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="37" y="-130" width="512" height="1" uuid="e1145fe4-0918-44c6-8708-f160a20904d0"/>
+			</line>
+			<line>
+				<reportElement x="6" y="-109" width="545" height="1" uuid="39123608-acba-4181-a2a8-8690fb7746b5"/>
+			</line>
+			<staticText>
+				<reportElement x="176" y="-588" width="238" height="19" uuid="8e191707-9624-4f00-baf5-9593d7d5de58"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Pesquisa Espontânea]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="-59" width="545" height="1" uuid="364f97fd-0d3d-42de-8b3a-a438f540032d"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="-94" width="31" height="16" uuid="37a4e316-bfc4-475f-8363-69c7ea91744a"/>
+				<text><![CDATA[saúde:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="35" y="-80" width="512" height="1" uuid="d53e8999-344f-4072-b57a-73ffd08e75e2"/>
+			</line>
+			<staticText>
+				<reportElement x="477" y="0" width="78" height="22" uuid="add808e7-ed21-4709-a080-5593ec8a51a2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ano:  ________ ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="106">
+			<componentElement>
+				<reportElement x="16" y="56" width="530" height="50" uuid="390e351b-1b73-42af-83a0-2397a797d7c9"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 4" uuid="6af7d9db-38f7-42e8-b1f2-587935c907f0">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="530" uuid="0f009a87-2688-433f-8d19-6ad7bbbfbd7d">
+						<jr:tableHeader height="30" rowSpan="1">
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<staticText>
+								<reportElement x="9" y="0" width="521" height="30" uuid="3d2b969d-340a-4307-8f6b-0861fe0e6407"/>
+								<textElement verticalAlignment="Middle"/>
+								<text><![CDATA[Entrevistador:]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnGroup width="530" uuid="8388c293-8945-442b-9db4-5d2e89bd3f74">
+							<jr:tableHeader height="30" rowSpan="1">
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<staticText>
+									<reportElement x="9" y="0" width="521" height="30" uuid="04620869-1499-43bf-94e3-ba71ff8424f4"/>
+									<textElement verticalAlignment="Middle"/>
+									<text><![CDATA[Data : _____/______/______]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:columnGroup width="530" uuid="a451a406-c219-467c-867e-e0e280bd3410">
+								<jr:tableHeader height="30" rowSpan="1">
+									<box>
+										<pen lineWidth="1.0"/>
+										<topPen lineWidth="1.0"/>
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="1.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="530" height="30" backcolor="#F0F0F0" uuid="8b09bc62-be3b-4e01-bdf4-be02b2b52077"/>
+										<textElement verticalAlignment="Middle">
+											<font isBold="true"/>
+										</textElement>
+										<text><![CDATA[ Entrevistado: ]]></text>
+									</staticText>
+								</jr:tableHeader>
+								<jr:columnGroup width="530" uuid="50a9b5c2-2864-4e93-a7c1-437535e7b89f">
+									<jr:tableHeader height="30" rowSpan="1">
+										<box>
+											<pen lineWidth="1.0"/>
+											<topPen lineWidth="1.0"/>
+											<leftPen lineWidth="1.0"/>
+											<bottomPen lineWidth="1.0"/>
+											<rightPen lineWidth="1.0"/>
+										</box>
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="530" height="30" backcolor="#F0F0F0" uuid="d13bde86-4541-44b7-84a8-4edaedd8cc54"/>
+											<textElement verticalAlignment="Middle">
+												<font isBold="true"/>
+											</textElement>
+											<text><![CDATA[ Endereço:]]></text>
+										</staticText>
+									</jr:tableHeader>
+									<jr:columnGroup width="530" uuid="cba0b255-1d3d-4d7f-82d1-92cdd06a1d4a">
+										<jr:columnGroup width="255" uuid="a6b66cf4-6bbc-4117-bee0-0f7bc7d40359">
+											<jr:tableHeader height="30" rowSpan="1">
+												<box>
+													<pen lineWidth="1.0"/>
+													<topPen lineWidth="1.0"/>
+													<leftPen lineWidth="1.0"/>
+													<bottomPen lineWidth="1.0"/>
+													<rightPen lineWidth="1.0"/>
+												</box>
+												<staticText>
+													<reportElement mode="Opaque" x="0" y="0" width="255" height="30" forecolor="#000000" backcolor="#F0F0F0" uuid="f221d573-5417-4790-b73d-a97e4239008b"/>
+													<textElement verticalAlignment="Middle">
+														<font isBold="true"/>
+													</textElement>
+													<text><![CDATA[ Bairro:]]></text>
+												</staticText>
+											</jr:tableHeader>
+											<jr:columnGroup width="103" uuid="b5d45873-f6c0-4986-ab0c-069c3cec3ad7">
+												<jr:columnGroup width="103" uuid="ad8d0303-a003-4bd0-8ab1-b9ff2d9f525b">
+													<jr:column width="103" uuid="ecaf297d-953d-4143-b923-7dd4d50aa529">
+														<jr:tableHeader height="0" rowSpan="1">
+															<box>
+																<pen lineWidth="1.0"/>
+																<topPen lineWidth="1.0"/>
+																<leftPen lineWidth="1.0"/>
+																<bottomPen lineWidth="1.0"/>
+																<rightPen lineWidth="1.0"/>
+															</box>
+														</jr:tableHeader>
+														<jr:tableFooter height="0" rowSpan="1"/>
+														<jr:columnHeader height="46" rowSpan="1">
+															<box>
+																<pen lineWidth="1.0"/>
+																<topPen lineWidth="1.0"/>
+																<leftPen lineWidth="1.0"/>
+																<bottomPen lineWidth="1.0"/>
+																<rightPen lineWidth="1.0"/>
+															</box>
+															<staticText>
+																<reportElement mode="Opaque" x="0" y="0" width="103" height="46" backcolor="#F0F0F0" uuid="1dda81f7-5831-4635-9654-63cc5f49a5ff"/>
+																<textElement verticalAlignment="Middle">
+																	<font isBold="true"/>
+																</textElement>
+																<text><![CDATA[ TEM TELEFONE:]]></text>
+															</staticText>
+														</jr:columnHeader>
+														<jr:columnFooter height="30" rowSpan="1"/>
+														<jr:detailCell height="0" rowSpan="1"/>
+													</jr:column>
+												</jr:columnGroup>
+											</jr:columnGroup>
+											<jr:columnGroup width="152" uuid="b3346b2b-5bda-4c07-883d-7f558c99f40f">
+												<jr:column width="152" uuid="afa36e0e-ae78-44ae-b8af-5670de5559f9">
+													<jr:tableFooter height="0" rowSpan="1"/>
+													<jr:columnHeader height="46" rowSpan="1">
+														<box>
+															<pen lineWidth="1.0"/>
+															<topPen lineWidth="1.0"/>
+															<leftPen lineWidth="1.0"/>
+															<bottomPen lineWidth="1.0"/>
+															<rightPen lineWidth="1.0"/>
+														</box>
+														<staticText>
+															<reportElement mode="Opaque" x="0" y="0" width="152" height="46" backcolor="#F0F0F0" uuid="82ebf53c-2fcd-4bb9-b393-4312d3455733"/>
+															<textElement verticalAlignment="Middle">
+																<font isBold="true"/>
+															</textElement>
+															<text><![CDATA[          SIM (  )   NÃO (  )]]></text>
+														</staticText>
+													</jr:columnHeader>
+													<jr:columnFooter height="30" rowSpan="1"/>
+													<jr:detailCell height="0" rowSpan="1"/>
+												</jr:column>
+											</jr:columnGroup>
+										</jr:columnGroup>
+										<jr:columnGroup width="275" uuid="52044b3a-2360-45e0-8279-eac655b57a1e">
+											<jr:tableHeader height="30" rowSpan="1">
+												<box>
+													<pen lineWidth="1.0"/>
+													<topPen lineWidth="1.0"/>
+													<leftPen lineWidth="1.0"/>
+													<bottomPen lineWidth="1.0"/>
+													<rightPen lineWidth="1.0"/>
+												</box>
+												<staticText>
+													<reportElement mode="Opaque" x="0" y="0" width="275" height="30" backcolor="#F0F0F0" uuid="e795ae42-9dd8-4d0b-b5a9-505f98044cd4"/>
+													<textElement verticalAlignment="Middle">
+														<font isBold="true"/>
+													</textElement>
+													<text><![CDATA[   CEP: _____ ______- ______]]></text>
+												</staticText>
+											</jr:tableHeader>
+											<jr:columnGroup width="275" uuid="604b3f55-27fa-4114-916d-80a58a08d12e">
+												<jr:columnGroup width="275" uuid="f8a1a1cb-ddcc-49b4-9e46-3265fbe83243">
+													<jr:tableHeader height="0" rowSpan="1"/>
+													<jr:columnGroup width="275" uuid="97ee58e4-7374-4930-bc83-88abb3cc8cd4">
+														<jr:columnGroup width="275" uuid="88adf8aa-9892-4284-95b9-a97a664cae93">
+															<jr:column width="275" uuid="bde7e960-bdcb-44be-81b2-1ed9e9a3579d">
+																<jr:tableFooter height="0" rowSpan="1"/>
+																<jr:columnHeader height="46" rowSpan="1">
+																	<box>
+																		<pen lineWidth="1.0"/>
+																		<topPen lineWidth="1.0"/>
+																		<leftPen lineWidth="1.0"/>
+																		<bottomPen lineWidth="1.0"/>
+																		<rightPen lineWidth="1.0"/>
+																	</box>
+																	<staticText>
+																		<reportElement mode="Opaque" x="0" y="0" width="275" height="46" backcolor="#F0F0F0" uuid="a816f61f-4041-4a4e-a3ea-0bbd69ca0f66"/>
+																		<textElement verticalAlignment="Middle">
+																			<font isBold="true"/>
+																		</textElement>
+																		<text><![CDATA[   SE SIM (    )  ___ ___ ___  ___ - ___ ___ ___ ___  ___
+
+   1. Residência       2. Comercial     3. Recado   4. Celular    ]]></text>
+																	</staticText>
+																</jr:columnHeader>
+																<jr:columnFooter height="30" rowSpan="1"/>
+																<jr:detailCell height="0" rowSpan="1"/>
+															</jr:column>
+														</jr:columnGroup>
+													</jr:columnGroup>
+												</jr:columnGroup>
+											</jr:columnGroup>
+										</jr:columnGroup>
+									</jr:columnGroup>
+								</jr:columnGroup>
+							</jr:columnGroup>
+						</jr:columnGroup>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="22" y="21" width="70" height="16" uuid="a8356ed7-b7d1-46d1-b6e3-107dbcdc2a05"/>
+				<text><![CDATA[Hora de Inicio: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="92" y="30" width="20" height="1" uuid="74aaa00d-6d9e-4dad-b6bf-2e838f272a67"/>
+			</line>
+			<line>
+				<reportElement x="122" y="30" width="25" height="1" uuid="ef55f1c3-2bcc-4d1c-aa67-e72b451a997e"/>
+			</line>
+			<staticText>
+				<reportElement x="112" y="17" width="10" height="20" uuid="1e8d1371-14a1-4c2c-ae20-28f13c1a56a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="21" width="84" height="15" uuid="b1cb3b6e-0cda-4567-8048-f76d834fb6e7"/>
+				<text><![CDATA[Hora de Termino:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="467" y="31" width="29" height="1" uuid="61084074-5168-4dfe-a78f-ace46fae3e51"/>
+			</line>
+			<line>
+				<reportElement x="506" y="31" width="25" height="1" uuid="4c987966-36d3-4936-931b-fd9cfd82fc21"/>
+			</line>
+			<staticText>
+				<reportElement x="496" y="21" width="10" height="15" uuid="cef40500-4d70-44e5-ae6d-a83a5bf832ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="272" y="17" width="274" height="25" uuid="47fcf611-db3b-4c2b-8b08-5b00ec5b652b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="16" y="17" width="236" height="25" uuid="ef7ea175-90b1-4992-a85d-d6acf5901436"/>
+			</rectangle>
+		</band>
+	</columnHeader>
+</jasperReport>

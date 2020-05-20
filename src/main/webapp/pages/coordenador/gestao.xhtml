@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+	<header class="page-header">
+      <div class="container-fluid">
+        <h2 class="no-margin-bottom">Gestão <small> - Painel de gestão</small></h2>
+      </div>
+    </header>
+    
+    <section class="dashboard-counts">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-12">
+    		<p:chart type="pie" model="#{gestaoController.graficoEleitores}" style="width:400px;height:300px" />		    	
+		</div>
+		<div class="col-lg-6 col-12">
+			<p:chart type="pie" model="#{gestaoController.graficoColaboradores}" style="width:400px;height:300px" />
+		</div>
+    </div>
+    <hr />
+	</div>
+	</section>
+	</ui:define>
+</ui:composition>

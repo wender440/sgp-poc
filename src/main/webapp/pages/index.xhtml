@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+	<header class="page-header">
+      <div class="container-fluid">
+      
+        <h2 class="no-margin-bottom">Dashboard <small> - Painel de situação</small></h2>
+        
+        <h:form prependId="false" style="float: right;margin-top: -20px;">
+       
+            <h:commandLink id="exportReport" immediate="true" 
+            action="#{indexController.imprimirFormulario()}" title="Imprimir Formulário" style="margin-right:55px;">
+             <p:graphicImage width="24"/>
+				<img src="../resources/images/pdf.png"/>
+            </h:commandLink>
+            
+       	    <p:outputLabel for="usuColaborador">Filtrar por: </p:outputLabel>
+       		<p:selectOneMenu id="usuColaborador" value="#{indexController.idColaborador}" filter="true" filterMatchMode="startsWith" style="width: 360px;margin-left:20px;margin-top:-4px;" panelStyle="width: 360px;" height="150">
+			<f:selectItem itemLabel="Selecione o colaborador" itemValue="" />
+			<f:selectItems value="#{indexController.colaboradores}" var="colaborador" itemLabel="#{colaborador.nome}" itemValue="#{colaborador.idUsuario}" />
+			<p:ajax event="change" process="@this" listener="#{indexController.selecionarUsuario()}" />
+		</p:selectOneMenu>
+       	</h:form>           
+      </div>
+    </header>
+    
+    <section class="dashboard-counts">
+    <div class="container-fluid">
+    <h:form id="frmTotais" prependId="false">
+    
+    <div class="row">
+        <div class="statistics col-lg-4 col-12">
+    	<div class="card text-center" style="width: auto;">
+		  <div class="card-body">
+		    <h2 class="card-title" style="color: #00E640;"><i class="fa fa-users" aria-hidden="true"></i> ELEITORES</h2>
+		    <p class="card-text"><strong>TOTAL:</strong> #{indexController.totalEleitores}</p>		    
+		  </div>
+		</div>
+		</div>
+		<div class="statistics col-lg-4 col-12">
+		<div class="card text-center" style="width: auto;">
+		  <div class="card-body">
+		    <h2 class="card-title" style="color: #FFE164;"><i class="fa fa-users" aria-hidden="true"></i> COLABORADORES</h2>
+		    <p class="card-text"><strong>TOTAL:</strong> #{indexController.totalColaboradores}</p>		   
+		  </div>
+		</div>
+		</div>
+		<div class="statistics col-lg-4 col-12">
+		<div class="card text-center" style="width: auto;">
+		  <div class="card-body">
+		    <h2 class="card-title" style="color: #9A12B3;"><i class="fa fa-users" aria-hidden="true"></i> TOTAL USUÁRIOS</h2>
+		    <p class="card-text"><strong>TOTAL:</strong> #{indexController.totalUsuarios}</p>		    
+		  </div>
+		</div>
+		</div>
+    </div>
+    
+    
+    </h:form>
+    
+    <div class="row">
+	<p:panel id="panelTabelaEleitores" header="Lista de Eleitores" style="margin-bottom:20px" >		  
+    <h:form id="frmTabelaEleitores" prependId="false">
+        		   
+	   <p:dataTable id="tbEleitores" var="eleitor" value="#{indexController.eleitores}" rows="10" paginator="true" paginatorPosition="bottom" emptyMessage="Nenhum registro">		       
+	   
+        <p:column headerText="Nome" style="width: 40%;" filterBy="#{eleitor.nome}" filterMatchMode="contains">
+            <h:outputText value="#{eleitor.nome}" />
+        </p:column>
+        <p:column headerText="CPF" style="width: 15%;text-align:center;" filterBy="#{eleitor.cpf}" filterMatchMode="contains">
+            <h:outputText value="#{eleitor.cpfFmt}" />
+        </p:column>
+        <p:column headerText="Email" style="text-align:center;" filterBy="#{eleitor.email}" filterMatchMode="contains">
+            <h:outputText value="#{eleitor.email}" />
+        </p:column>
+        <p:column headerText="Cidade" style="text-align:center;" filterBy="#{eleitor.cidade.nome}" filterMatchMode="contains">
+            <h:outputText value="#{eleitor.cidade.nome}" />
+        </p:column>        	       			    		        		     
+        <p:column headerText="Ações" style="width:100px;text-align:center;">
+             <p:link type="button" outcome="/pages/cadastro" title="Editar" styleClass="btn btn-primary" style="color: #fff;">
+               <i class="fa fa-pencil" aria-hidden="true" style="color: #fff;"></i>
+               <f:param name="idUsuario" value="#{eleitor.idUsuario}" />
+             </p:link>
+             <p:spacer />
+             <p:commandLink type="button" actionListener="#{indexController.excluirUsuario(eleitor)}" title="Excluir" update=":formMsg:growl" styleClass="btn btn-danger" style="color: #fff;">
+               <i class="fa fa-trash" aria-hidden="true" style="color: #fff;"></i>
+               <p:confirm header="Exclusão de registro" message="Deseja realmente excluir este registro?" />
+             </p:commandLink>
+        </p:column>
+	   </p:dataTable>
+    </h:form>
+    </p:panel>
+    <br/>
+    <hr/>
+    <p:panel id="panelTabelaColaboradores" header="Lista de Colaboradores" style="margin-bottom:20px">		  
+    <h:form id="frmTabelaColaboradores" prependId="false">     		   
+	   <p:dataTable id="tbColaboradores" var="colaborador" value="#{indexController.colaboradores}" rows="10" paginator="true" paginatorPosition="bottom" emptyMessage="Nenhum registro">		       
+        <p:column headerText="Nome" style="width: 40%;" filterBy="#{colaborador.nome}" filterMatchMode="contains">
+            <h:outputText value="#{colaborador.nome}" />
+        </p:column>
+        <p:column headerText="CPF" style="width: 15%;text-align:center;" filterBy="#{colaborador.cpf}" filterMatchMode="contains">
+            <h:outputText value="#{colaborador.cpfFmt}" />
+        </p:column>
+        <p:column headerText="Email" style="text-align:center;" filterBy="#{colaborador.email}" filterMatchMode="contains">
+            <h:outputText value="#{colaborador.email}" />
+        </p:column>
+        <p:column headerText="Cidade" style="text-align:center;" filterBy="#{colaborador.cidade.nome}" filterMatchMode="contains">
+            <h:outputText value="#{colaborador.cidade.nome}" />
+        </p:column>       			    		        		      
+        <p:column headerText="Ações" style="width:100px;text-align:center;">
+             <p:link type="button" outcome="/pages/cadastro" title="Editar" styleClass="btn btn-primary" style="color: #fff;">
+               <i class="fa fa-pencil" aria-hidden="true" style="color: #fff;"></i>
+               <f:param name="idUsuario" value="#{colaborador.idUsuario}" />
+             </p:link>
+             <p:spacer />
+             <p:commandLink type="button" actionListener="#{indexController.excluirUsuario(colaborador)}" title="Excluir" update=":formMsg:growl" styleClass="btn btn-danger" style="color: #fff;">
+               <i class="fa fa-trash" aria-hidden="true" style="color: #fff;"></i>
+               <p:confirm header="Exclusão de registro" message="Deseja realmente excluir este registro?" />
+             </p:commandLink>
+        </p:column>
+        
+	   </p:dataTable>
+    </h:form>
+    </p:panel>   
+    </div>
+	</div>
+	</section>
+	</ui:define>
+</ui:composition>
