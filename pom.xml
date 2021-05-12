@@ -22,7 +22,7 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
 		<!-- Spring Security Version -->
-		<spring.security.version>4.1.0.RELEASE</spring.security.version>
+		<spring.security.version>5.2.10.RELEASE</spring.security.version>
 		<spring.faces.version>2.4.2.RELEASE</spring.faces.version>
 
 		<!-- Primefaces version -->
